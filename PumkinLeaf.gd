@@ -6,7 +6,7 @@ export var growthStep : float = 0.15
 export var maxSize : float
 export var inverted : bool = false
 
-export var tiltAngle : int = -30
+export var tiltAngle : int = -25
 export var tiltStep : float = 0.1
 
 export var bumped : bool = false
@@ -25,7 +25,7 @@ func _physics_process(_delta):
 	if abs(rotation_degrees) - 1 <= 0.0:
 		reachedMaxAngle = false
 	
-	if bumped and !reachedMaxAngle or !reachedMaxAngle and abs(rotation_degrees) - 1 >= 0.0:
+	if bumped and !reachedMaxAngle or !reachedMaxAngle and abs(rotation_degrees) - 1 >= 0.0 and !bumped:
 		rotation_degrees = lerp(rotation_degrees, tiltAngle, tiltStep)
 	
 	if !bumped and reachedMaxAngle:
@@ -52,7 +52,6 @@ func _on_Timer_timeout():
 func _on_PumpkinLeaf_body_entered(_body):
 	if bumped == false:
 		bumped = true
-		reachedMaxAngle = false
 
 func _on_PumpkinLeaf_body_exited(_body):
 	bumped = false
