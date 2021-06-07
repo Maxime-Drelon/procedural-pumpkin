@@ -7,6 +7,9 @@ export var angleMax : int = 50
 export var direction : Vector2 = Vector2(0, -1)
 export var randAngle : bool = true
 
+export var growthInterval : float = 0.1
+export var drawingInterval : float = 0.1
+
 var pos : Vector2 = Vector2(0, 0)
 var poses : Array = Array()
 var leafs : Array = Array()
@@ -23,11 +26,15 @@ onready var growthTimer : Timer = get_node("Timer")
 onready var drawingTimer : Timer = get_node("Timer2")
 
 onready var tileMap : TileMap = get_node("TileMap")
+onready var ySort : YSort = get_node("YSort")
 
 onready var leaf : PackedScene = preload("res://PumkinLeaf.tscn")
 
 func _ready():
 	randomize()
+	
+	growthTimer.wait_time = growthInterval
+	drawingTimer.wait_time = drawingInterval
 
 func draw_vine_bit():
 	if pointsIndex >= points.size():
@@ -52,25 +59,24 @@ func draw_vines():
 	
 	growthTimer.stop()
 	
-	if sentenceIndex % 2 == 0:
-		var localCellPosition = tileMap.map_to_world(pos)
-		var globalCellPosition = tileMap.to_global(localCellPosition)
-		
-		var scale : float = rand_range(3, 5.5)
-		var new_leaf : Node = leaf.instance()
-		
-		new_leaf.maxSize = scale
-		
-		globalCellPosition.x = globalCellPosition.x - global_position.x
-		globalCellPosition.y = globalCellPosition.y - global_position.y
-		
-		new_leaf.global_position = globalCellPosition
-		
-		if leafs.size() % 2 == 0 and leafs.size() > 0:
-			new_leaf.invert()
-		
-		leafs.append(new_leaf)
-		add_child(new_leaf)
+	var localCellPosition = tileMap.map_to_world(next_pos)
+	var globalCellPosition = tileMap.to_global(localCellPosition)
+	
+	var scale : float = rand_range(3, 5.5)
+	var new_leaf : Node = leaf.instance()
+	
+	new_leaf.maxSize = scale
+	
+	globalCellPosition.x = globalCellPosition.x - global_position.x
+	globalCellPosition.y = globalCellPosition.y - global_position.y
+	
+	new_leaf.global_position = globalCellPosition
+	
+	if leafs.size() % 2 != 0:
+		new_leaf.invert()
+	
+	leafs.append(new_leaf)
+	ySort.add_child(new_leaf)
 	
 	drawingTimer.start()
 

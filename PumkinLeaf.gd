@@ -19,7 +19,7 @@ func _ready():
 	growthTimer.start()
 
 func _physics_process(_delta):
-	if abs(rotation_degrees) + 0.1 >= abs(tiltAngle) and !reachedMaxAngle:
+	if abs(rotation_degrees) + 0.5 >= abs(tiltAngle) and !reachedMaxAngle:
 		reachedMaxAngle = true
 	
 	if abs(rotation_degrees) - 1 <= 0.0:

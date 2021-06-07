@@ -6,6 +6,8 @@
 [node name="Main" type="Node"]
 
 [node name="Pumpkin" parent="." instance=ExtResource( 1 )]
+growthInterval = 0.001
+drawingInterval = 0.001
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -70 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leaf.png-a574e32cc18bddb8cfeb5489dcaf7b91.stex"
+path="res://.import/pumpkinLeaf.png-1cb521d7055a81e0d19a6547d30adec7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/leaf.png"
-dest_files=[ "res://.import/leaf.png-a574e32cc18bddb8cfeb5489dcaf7b91.stex" ]
+source_file="res://Assets/pumpkinLeaf.png"
+dest_files=[ "res://.import/pumpkinLeaf.png-1cb521d7055a81e0d19a6547d30adec7.stex" ]
 
 [params]
 

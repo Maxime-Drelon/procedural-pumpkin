@@ -133,6 +133,7 @@
 
 [node name="Pumpkin" type="Node2D"]
 script = ExtResource( 2 )
+length = 15
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -144,6 +145,8 @@ wait_time = 0.1
 
 [node name="Timer2" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="YSort" type="YSort" parent="."]
 
 [node name="Rules" type="Control" parent="."]
 margin_right = 40.0
@@ -213,7 +216,7 @@ margin_left = -112.0
 margin_top = 24.0
 margin_right = 152.0
 margin_bottom = 48.0
-text = "FX[++FX]-"
+text = "+F-X[++FX]-"
 __meta__ = {
 "_edit_use_anchors_": false
 }
