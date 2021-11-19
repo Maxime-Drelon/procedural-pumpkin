@@ -1,4 +1,4 @@
-# Proc-Pumpkin
+# Procedural-Pumpkin
 
 Procedural pumpkin made in Godot using the L-System and the Bresenham Line algorithm for rendering
 
